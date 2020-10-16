@@ -7,13 +7,13 @@ if($_REQUEST['action'] === 'index'){
 } elseif ($_REQUEST['action'] === 'create'){
   $request_body = file_get_contents('php://input');
   $body_object = json_decode($request_body);
-  $new_post = new Post(null, $body_object->name, $body_object->age);
+  $new_post = new Post(null, $body_object->name, $body_object->title, $body_object->image, $body_object->votes, $body_object->comments);
   $all_posts = Posts::create($new_post);
   echo json_encode($all_posts);
 } elseif ($_REQUEST['action'] === 'update') {
   $request_body = file_get_contents('php://input');
   $body_object = json_decode($request_body);
-  $updated_post = new Post($_REQUEST['id'], $body_object->name, $body_object->age);
+  $updated_post = new Post($_REQUEST['id'], $body_object->name, $body_object->title, $body_object->image, $body_object->votes, $body_object->comments);
   $all_posts = Posts::update($updated_post);
   echo json_encode($all_posts);
 } else if ($_REQUEST['action'] === 'delete'){
