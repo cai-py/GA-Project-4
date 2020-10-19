@@ -1,16 +1,4 @@
-.container {
-    width: 80%;
-    max-width: 800px;
-    margin: 0 auto;
 
-    border: solid black;
-    background-color: lightgray;
-}
-
-.post {
-    width: 400px;
-    margin: 0 auto;
-    text-align: center;
-
-    border: solid green;
+body {
+  background-color: #8d99ae;
 }

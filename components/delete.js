@@ -1,6 +1,6 @@
 class DeleteForm extends React.Component {
-  deletePerson = (event) => {
-    axios.delete('/people/' + this.props.person.id).then(
+  deletePost = (event) => {
+    axios.delete('/post/' + this.props.post.id).then(
       (response) => {
         this.props.deleteCallback(response.data);
       }
@@ -8,7 +8,7 @@ class DeleteForm extends React.Component {
   }
 
   render = () => {
-    return  <button onClick={this.deletePerson}>
+    return  <button onClick={this.deletePost}>
               DELETE
             </button>
   }
