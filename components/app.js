@@ -34,14 +34,14 @@ class App extends React.Component {
                       {post.title}<br/>
                       <img src={post.image}/><br/>
                       Votes: {post.votes}<br/>
-                      <DeleteForm
-                        deleteCallback={this.updatePosts}
-                        post={post}>
-                      </DeleteForm>
                       <UpdateForm
                         updateCallback={this.updatePosts}
                         post={post}>
                       </UpdateForm>
+                      <DeleteForm
+                        deleteCallback={this.updatePosts}
+                        post={post}>
+                      </DeleteForm>
                     </li>
                 })}
         </ul>
