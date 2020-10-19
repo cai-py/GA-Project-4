@@ -7,16 +7,14 @@ class Post {
     public $title;
     public $image;
     public $votes;
-    public $comments;
 
 
-    public function __construct($id, $name, $title, $image, $votes = 0, $comments){
+    public function __construct($id, $name, $title, $image, $votes = 0){
       $this->id = $id;
       $this->name = $name;
       $this->title = $title;
       $this->image = $image;
       $this->votes = $votes;
-      $this->comments = $comments;
     }
 }
 
@@ -30,15 +28,15 @@ class Posts {
   }
 
   static function update($updated_post){
-      $query ="UPDATE posts SET name = $1, title = $2, image = $3, votes = $4, comments = $5 WHERE id =$6";
-      $query_params = array($updated_post->name, $updated_post->title, $updated_post->image, $updated_post->votes, $updated_post->comments);
+      $query ="UPDATE posts SET name = $1, title = $2, image = $3, votes = $4 WHERE id = $5";
+      $query_params = array($updated_post->name, $updated_post->title, $updated_post->image, $updated_post->votes, $updated_post->id);
       pg_query_params($query, $query_params);
       return self::all();
   }
 
   static function create($post){
-      $query = "INSERT INTO posts (name, title, image, votes, comments) VALUES ($1, $2, $3, $4, $5)";
-      $query_params = [$post->name, $post->title, $post->image, $post->votes, $post->comments];
+      $query = "INSERT INTO posts (name, title, image) VALUES ($1, $2, $3)";
+      $query_params = [$post->name, $post->title, $post->image];
       pg_query_params($query, $query_params);
        return self::all();
   }
@@ -56,8 +54,7 @@ class Posts {
           $row_object->name,
           $row_object->title,
           $row_object->image,
-          intval($row_object->votes),
-          $row_object->comments
+          intval($row_object->votes)
         );
         $posts[] = $new_post;
 

@@ -1,23 +1,23 @@
 class App extends React.Component {
   state = {
-    people: []
+    posts: []
   }
 
   componentDidMount = () => {
-    axios.get('/people').then(
+    axios.get('/post').then(
       (response) => {
         this.setState(
         {
-          people: response.data
+          posts: response.data
         }
       )
     })
   }
 
-  updatePeople = (allPeople) => {
+  updatePosts = (allPosts) => {
     this.setState(
       {
-        people: allPeople
+        posts: allPosts
       }
     )
   }
@@ -25,19 +25,22 @@ class App extends React.Component {
   render = () => {
     return (
       <div>
-        <CreateForm createCallback={this.updatePeople}></CreateForm>
-        <h2>List of People</h2>
+        <CreateForm createCallback={this.updatePosts}></CreateForm>
+        <h2>List of Posts</h2>
         <ul>
-          {this.state.people.map((person) => {
+          {this.state.posts.map((post) => {
             return  <li>
-                      {person.name}: {person.age}<br/>
+                      {post.name} <br/>
+                      {post.title}<br/>
+                      <img src={post.image}/><br/>
+                      Votes: {post.votes}<br/>
                       <DeleteForm
-                        deleteCallback={this.updatePeople}
-                        person={person}>
+                        deleteCallback={this.updatePosts}
+                        post={post}>
                       </DeleteForm>
                       <UpdateForm
-                        updateCallback={this.updatePeople}
-                        person={person}>
+                        updateCallback={this.updatePosts}
+                        post={post}>
                       </UpdateForm>
                     </li>
                 })}

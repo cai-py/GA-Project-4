@@ -1,24 +1,31 @@
 class CreateForm extends React.Component {
 
-  changeNewPersonName = (event) => {
+  changeNewPostName = (event) => {
     this.setState({
-      newPersonName:event.target.value
+      newPostName: event.target.value
     })
   }
 
-  changeNewPersonAge = (event) => {
+  changeNewPostTitle = (event) => {
     this.setState({
-      newPersonAge:event.target.value
+      newPostTitle: event.target.value
     })
   }
 
-  createPerson = (event) => {
+  changeNewPostImage = (event) => {
+    this.setState({
+      newPostImage: event.target.value
+    })
+  }
+
+  createPost = (event) => {
     event.preventDefault();
     event.target.reset();
-    axios.post('/people',
+    axios.post('/post',
       {
-        name: this.state.newPersonName,
-        age: this.state.newPersonAge,
+        name: this.state.newPostName,
+        title: this.state.newPostTitle,
+        image: this.state.newPostImage,
       }
     ).then(
       (response) => {
@@ -30,11 +37,12 @@ class CreateForm extends React.Component {
   render = () => {
     return (
       <div>
-      <h2>Create Person</h2>
-        <form onSubmit={this.createPerson}>
-          <input onKeyUp={this.changeNewPersonName} type="text" placeholder="name"/><br/>
-          <input onKeyUp={this.changeNewPersonAge} type="number" placeholder="age"/><br/>
-          <input type="submit" value="Create Person"/>
+      <h2>Create Post</h2>
+        <form onSubmit={this.createPost}>
+          <input onKeyUp={this.changeNewPostName} type="text" placeholder="name"/><br/>
+          <input onKeyUp={this.changeNewPostTitle} type="text" placeholder="title"/><br/>
+          <input onKeyUp={this.changeNewPostImage} type="text" placeholder="image"/><br/>
+          <input type="submit" value="Create Post"/>
         </form>
       </div>
     )

@@ -1,10 +1,12 @@
 class UpdateForm extends React.Component {
-  updatePerson = (event) => {
+  updatePost = (event) => {
     event.preventDefault();
-    axios.put('/people/' + this.props.person.id,
+    axios.put('/post/' + this.props.post.id,
       {
         name: this.refs.name.value,
-        age: this.refs.age.value
+        title: this.refs.title.value,
+        image: this.refs.image.value,
+        votes: this.refs.votes.value
       }
     ).then(
       (response) => {
@@ -16,10 +18,12 @@ class UpdateForm extends React.Component {
   render = () => {
     return (
       <div>
-        <form onSubmit={this.updatePerson}>
-          <input ref="name" defaultValue={this.props.person.name} type="text" /><br/>
-          <input ref="age" defaultValue={this.props.person.age} type="number" /><br/>
-          <input type="submit" value="Update Person"/>
+        <form onSubmit={this.updatePost}>
+          <input ref="name" defaultValue={this.props.post.name} type="text" /><br/>
+          <input ref="title" defaultValue={this.props.post.title} type="text" /><br/>
+          <input ref="image" defaultValue={this.props.post.image} type="text" /><br/>
+          <input ref="votes" value={this.props.post.votes} type="number" /><br/>
+          <input type="submit" value="Update Post"/>
         </form>
       </div>
     )
