@@ -24,12 +24,14 @@ class App extends React.Component {
 
   render = () => {
     return (
-      <div>
+      <div className="container">
         <CreateForm createCallback={this.updatePeople}></CreateForm>
-        <h2>List of People</h2>
+        <h2>POSTS</h2>
         {this.state.posts.map((post) => {
           return  <div className="post">
-                    {post.name}: {post.title}<br/>
+                    <h4>{post.name}</h4>
+                    <img src={post.img}></img>
+                    <p>{post.title}</p>
                     {/* <DeleteForm
                       deleteCallback={this.updatePeople}
                       post={post}>
