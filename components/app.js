@@ -76,6 +76,7 @@ class App extends React.Component {
                     </li>
                 })}
         </ul>
+        <Footer></Footer>
       </div>
     )
   }

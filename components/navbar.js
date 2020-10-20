@@ -6,6 +6,7 @@ class Navbar extends React.Component {
         <button type="button" className="btn btn-secondary" data-toggle="modal" data-target="#postModal">
           Add Post
         </button>
+        <How></How>
         <CreateForm createCallback={this.props.updatePostCallback}></CreateForm>
       </nav>
     )
