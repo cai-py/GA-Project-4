@@ -1,6 +1,7 @@
 class App extends React.Component {
   state = {
-    posts: []
+    posts: [],
+    likes: 0
   }
 
   componentDidMount = () => {
@@ -29,6 +30,18 @@ class App extends React.Component {
     })
   }
 
+  addLike = () => {
+    this.setState({
+      likes: this.state.likes + 1
+    })
+  }
+
+  decLike = () => {
+    this.setState({
+      likes: this.state.likes - 1
+    })
+  }
+
   render = () => {
     return (
       <div className="page">
@@ -48,6 +61,11 @@ class App extends React.Component {
                             post={post}>
                           </EditModal>
                         </div>
+                      </div>
+                      <div className="likes">
+                        <ion-icon className="upvote" name="chevron-up-outline" onClick={this.addLike}></ion-icon>
+                        <p className="numlikes">{this.state.likes}</p>
+                        <ion-icon className="downvote" name="chevron-down-outline" onClick={this.decLike}></ion-icon>
                       </div>
                       <div className="image">
                         <img className="img-fluid" alt="Responsive image" src={post.image}/><br/>
