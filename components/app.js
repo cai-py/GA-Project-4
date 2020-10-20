@@ -4,8 +4,23 @@ class App extends React.Component {
   }
 
   componentDidMount = () => {
-    axios.get('/post').then(
+    this.handleMount();
+  }
+
+  updatePosts = (allPosts) => {
+    // console.log("allPosts", allPosts);
+    this.setState(
+      {
+        posts: allPosts
+      }
+    )
+  }
+
+  handleMount = () => {
+    axios.get('/post')
+      .then(
       (response) => {
+        // console.log("response", response);
         this.setState(
         {
           posts: response.data
@@ -14,34 +29,32 @@ class App extends React.Component {
     })
   }
 
-  updatePosts = (allPosts) => {
-    this.setState(
-      {
-        posts: allPosts
-      }
-    )
-  }
-
   render = () => {
     return (
-      <div>
-        <CreateForm createCallback={this.updatePosts}></CreateForm>
-        <h2>List of Posts</h2>
+      <div className="page">
+        <Navbar updatePostCallback={this.updatePosts}></Navbar>
         <ul>
           {this.state.posts.map((post) => {
-            return  <li>
-                      {post.name} <br/>
-                      {post.title}<br/>
-                      <img src={post.image}/><br/>
-                      Votes: {post.votes}<br/>
-                      <UpdateForm
-                        updateCallback={this.updatePosts}
-                        post={post}>
-                      </UpdateForm>
-                      <DeleteForm
-                        deleteCallback={this.updatePosts}
-                        post={post}>
-                      </DeleteForm>
+            return  <li key={post.id} className="user-post">
+                      <div className="post-header">
+                        <div className="name-title">
+                          <p className="post-name">posted by: {post.name}</p><br/>
+                          <h5 className="post-title">{post.title}</h5><br/>
+                        </div>
+                        <div className="edit-tab">
+                          <EditModal
+                            updatePostCallback={this.updatePosts}
+                            deletePostCallback={this.updatePosts}
+                            post={post}>
+                          </EditModal>
+                        </div>
+                      </div>
+                      <div className="image">
+                        <img className="img-fluid" alt="Responsive image" src={post.image}/><br/>
+                      </div>
+                      {/*<div className="post-votes">
+                        <p className="postvote">{post.votes}</p><br/>
+                      </div>*/}
                     </li>
                 })}
         </ul>

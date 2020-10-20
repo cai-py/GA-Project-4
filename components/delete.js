@@ -8,8 +8,8 @@ class DeleteForm extends React.Component {
   }
 
   render = () => {
-    return  <button onClick={this.deletePost}>
-              DELETE
+    return  <button className="btn btn-danger" onClick={this.deletePost}>
+              Delete
             </button>
   }
 }

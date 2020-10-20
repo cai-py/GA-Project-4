@@ -1,5 +1,22 @@
 <?php
-$dbconn = pg_connect("host=localhost dbname=ga_project_4");
+$dbconn = null;
+if(getenv('DATABASE_URL')){ // if using the heroku database
+	$connectionConfig = parse_url(getenv('DATABASE_URL'));
+	$host = $connectionConfig['host'];
+	$user = $connectionConfig['user'];
+	$password = $connectionConfig['pass'];
+	$port = $connectionConfig['port'];
+	$dbname = trim($connectionConfig['path'],'/');
+	$dbconn = pg_connect(
+		"host=".$host." ".
+		"user=".$user." ".
+		"password=".$password." ".
+		"port=".$port." ".
+		"dbname=".$dbname
+	);
+} else { // if using the local database, change the dbname to be whatever your local database's name is
+	$dbconn = pg_connect("host=localhost dbname=project");
+}
 
 class Post {
     public $id;
@@ -51,7 +68,8 @@ class Posts {
   static function all(){
     $posts= array();
 
-    $results = pg_query("SELECT * FROM posts ORDER BY id ASC");
+
+    $results = pg_query("SELECT * FROM posts ORDER BY id DESC");
 
     $row_object = pg_fetch_object($results);
       while($row_object !== false){
