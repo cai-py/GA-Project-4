@@ -8,7 +8,7 @@
 }
 
 body {
-  background-color: #8d99ae;
+  background-image: linear-gradient(#212529, #e9ecef);
 }
 
 .page {
@@ -17,12 +17,14 @@ body {
 
 .navbar {
   width: 100%;
-  background-color: #282a38;
+  background-color: #212529;
   margin-bottom: 30px;
 }
 
 .navbar-brand {
   color: white;
+  animation: pulse 3s infinite;
+  animation-timing-function: ease-out;
 }
 
 .addpost-area, .editpost-area {
@@ -60,12 +62,13 @@ ul {
 
 .user-post {
   border: 1px solid #999ea4;
-  border-radius: 3px;
-  background-color: #ecf0f2;
+  border-radius: 6px;
+  background-color: white;
   width: 70%;
   margin: auto;
   margin-bottom: 15px;
   box-shadow: 3px 3px rgba(65, 66, 68, 0.2);
+  animation: bounceIn 2s;
 }
 
 .name-title {
@@ -96,8 +99,9 @@ ul {
 }
 
 .image {
-  border-bottom-left-radius: 3px;
-  border-bottom-right-radius: 3px;
+  width: 90%;
+  margin: auto;
+  margin-bottom: 10px;
 }
 
 .likes {
@@ -110,7 +114,7 @@ ul {
 }
 
 .footer {
-  background-color: #282a38;
+  background-color: #212529;
   display: flex;
   height: 70px;
   justify-content: center;
@@ -136,4 +140,23 @@ ul {
   color: white;
   margin-left: 10px;
   margin-right: 10px;
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    color: #c9e4ca;
+  }
+  100% {
+    color: #5a967a;
+  }
 }
