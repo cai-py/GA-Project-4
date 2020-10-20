@@ -23,15 +23,13 @@ class Post {
     public $name;
     public $title;
     public $image;
-    public $votes;
 
 
-    public function __construct($id, $name, $title, $image, $votes = 0){
+    public function __construct($id, $name, $title, $image){
       $this->id = $id;
       $this->name = $name;
       $this->title = $title;
       $this->image = $image;
-      $this->votes = $votes;
     }
 }
 
@@ -45,8 +43,8 @@ class Posts {
   }
 
   static function update($updated_post){
-      $query ="UPDATE posts SET name = $1, title = $2, image = $3, votes = $4 WHERE id = $5";
-      $query_params = array($updated_post->name, $updated_post->title, $updated_post->image, $updated_post->votes, $updated_post->id);
+      $query ="UPDATE posts SET name = $1, title = $2, image = $3 WHERE id = $4";
+      $query_params = array($updated_post->name, $updated_post->title, $updated_post->image, $updated_post->id);
       pg_query_params($query, $query_params);
       return self::all();
   }
@@ -70,8 +68,7 @@ class Posts {
           intval($row_object->id),
           $row_object->name,
           $row_object->title,
-          $row_object->image,
-          intval($row_object->votes)
+          $row_object->image
         );
         $posts[] = $new_post;
 

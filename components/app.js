@@ -1,7 +1,6 @@
 class App extends React.Component {
   state = {
-    posts: [],
-    likes: 0
+    posts: []
   }
 
   componentDidMount = () => {
@@ -30,18 +29,6 @@ class App extends React.Component {
     })
   }
 
-  addLike = () => {
-    this.setState({
-      likes: this.state.likes + 1
-    })
-  }
-
-  decLike = () => {
-    this.setState({
-      likes: this.state.likes - 1
-    })
-  }
-
   render = () => {
     return (
       <div className="page">
@@ -64,7 +51,7 @@ class App extends React.Component {
                       </div>
                       <div className="likes">
                         <ion-icon className="upvote" name="chevron-up-outline" onClick={this.addLike}></ion-icon>
-                        <p className="numlikes">{this.state.likes}</p>
+                        <p className="numlikes">0</p>
                         <ion-icon className="downvote" name="chevron-down-outline" onClick={this.decLike}></ion-icon>
                       </div>
                       <div className="image">

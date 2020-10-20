@@ -26,7 +26,7 @@ class CreateForm extends React.Component {
       {
         name: this.state.newPostName,
         title: this.state.newPostTitle,
-        image: this.state.newPostImage,
+        image: this.state.newPostImage
       }
     ).then(
       (response) => {

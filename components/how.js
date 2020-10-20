@@ -16,7 +16,7 @@ class How extends React.Component {
               </button>
             </div>
             <div className="modal-body">
-              <h6>You can view the posts that users have made. If you would like to add a post you can add a post by using the button "Add Post". Enjoy!</h6>
+              <h6>You can view the posts that users have made. If you would like to add a post you can add a post by using the button "Add Post". If you add a video add, ?autoplay=1&mute=1 , to the youtube link. Enjoy!</h6>
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
