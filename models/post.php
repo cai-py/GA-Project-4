@@ -44,7 +44,7 @@ class Posts {
   static function all(){
     $posts= array();
 
-    $results = pg_query("SELECT * FROM posts");
+    $results = pg_query("SELECT * FROM posts ORDER BY id DESC");
 
     $row_object = pg_fetch_object($results);
       while($row_object !== false){
