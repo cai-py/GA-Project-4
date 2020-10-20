@@ -62,7 +62,7 @@ ul {
 .user-post {
   border: 1px solid #999ea4;
   border-radius: 3px;
-  background-color: #e4eaed;
+  background-color: #ecf0f2;
   width: 70%;
   margin: auto;
   margin-bottom: 15px;
@@ -98,4 +98,13 @@ ul {
 .image {
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
+}
+
+.likes {
+  margin-left: 0.6em;
+}
+
+.numlikes {
+  margin-left: 0.2em;
+  margin-bottom: 0;
 }
