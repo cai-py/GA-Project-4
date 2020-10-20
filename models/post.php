@@ -41,6 +41,13 @@ class Posts {
        return self::all();
   }
 
+  // static function upvote($updated_post) {
+  //   $query ="UPDATE posts SET name = $1, title = $2, image = $3, votes = $4 WHERE id = $5";
+  //     $query_params = array($updated_post->name, $updated_post->title, $updated_post->image, $updated_post->votes, $updated_post->id);
+  //     pg_query_params($query, $query_params);
+  //     return self::all();
+  // }
+
   static function all(){
     $posts= array();
 
